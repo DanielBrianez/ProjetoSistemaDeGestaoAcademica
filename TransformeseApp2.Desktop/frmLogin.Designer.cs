@@ -62,6 +62,7 @@
             lblEsqueciSenha = new Guna.UI2.WinForms.Guna2HtmlLabel();
             btnKill = new Guna.UI2.WinForms.Guna2CircleButton();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
+            mdEntrar = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -173,6 +174,7 @@
             txtUsuario.ShadowDecoration.CustomizableEdges = customizableEdges4;
             txtUsuario.Size = new Size(281, 35);
             txtUsuario.TabIndex = 0;
+            txtUsuario.KeyDown += txtUsuario_KeyDown;
             // 
             // pictureBox5
             // 
@@ -237,6 +239,7 @@
             txtSenha.Size = new Size(281, 35);
             txtSenha.TabIndex = 1;
             txtSenha.UseSystemPasswordChar = true;
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // guna2HtmlLabel3
             // 
@@ -345,6 +348,15 @@
             guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
+            // mdEntrar
+            // 
+            mdEntrar.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            mdEntrar.Caption = "Sucesso ao entrar";
+            mdEntrar.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            mdEntrar.Parent = this;
+            mdEntrar.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            mdEntrar.Text = null;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -407,5 +419,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel lblEsqueciSenha;
         private Guna.UI2.WinForms.Guna2CircleButton btnKill;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdEntrar;
     }
 }

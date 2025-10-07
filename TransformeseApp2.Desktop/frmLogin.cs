@@ -16,8 +16,9 @@ namespace TransformeseApp2.Desktop
             try
             {
                 var usuario = usuarioBLL.Login(txtUsuario.Text, txtSenha.Text);
+                Session.UsuarioLogado = usuario;
+                mdEntrar.Show($"Seja bem vindo(a) {Session.UsuarioLogado.Nome}!");
 
-                MessageBox.Show($"Seja bem vinda(a) {txtUsuario.Text}!");
                 frmMain principal = new frmMain();
                 principal.Show();
                 Hide();
@@ -45,6 +46,33 @@ namespace TransformeseApp2.Desktop
             frmEsqueciSenha.Show();
         }
 
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (string.IsNullOrWhiteSpace(txtSenha.Text))
+                {
+                    txtSenha.Focus();
+                }
+                else
+                {
+                    btnEntrar.PerformClick();
+                }
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+
+
+        }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnEntrar.PerformClick();
+            }
+        }
     }
 }
 

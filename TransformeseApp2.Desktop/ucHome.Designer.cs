@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            label1 = new Label();
+            lblBemVindo = new Label();
             guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            label3 = new Label();
+            lblAlunos = new Label();
             pictureBox1 = new PictureBox();
             label2 = new Label();
             guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2CircleProgressBar2 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            label4 = new Label();
+            lblCursos = new Label();
             pictureBox2 = new PictureBox();
             label5 = new Label();
             guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2CircleProgressBar3 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            label6 = new Label();
+            lblUnidades = new Label();
             pictureBox3 = new PictureBox();
             label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -67,30 +67,30 @@
             // guna2PictureBox1
             // 
             guna2PictureBox1.BorderRadius = 20;
-            guna2PictureBox1.CustomizableEdges = customizableEdges10;
+            guna2PictureBox1.CustomizableEdges = customizableEdges1;
             guna2PictureBox1.FillColor = Color.FromArgb(140, 10, 126);
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new Point(72, 105);
             guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges11;
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
             guna2PictureBox1.Size = new Size(226, 346);
             guna2PictureBox1.TabIndex = 5;
             guna2PictureBox1.TabStop = false;
             // 
-            // label1
+            // lblBemVindo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 18F);
-            label1.Location = new Point(72, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(283, 30);
-            label1.TabIndex = 4;
-            label1.Text = "Bem vindo(a), Usuário!";
+            lblBemVindo.AutoSize = true;
+            lblBemVindo.Font = new Font("Century Gothic", 18F);
+            lblBemVindo.Location = new Point(72, 32);
+            lblBemVindo.Name = "lblBemVindo";
+            lblBemVindo.Size = new Size(283, 30);
+            lblBemVindo.TabIndex = 4;
+            lblBemVindo.Text = "Bem vindo(a), Usuário!";
             // 
             // guna2CircleProgressBar1
             // 
             guna2CircleProgressBar1.BackColor = Color.FromArgb(140, 10, 126);
-            guna2CircleProgressBar1.Controls.Add(label3);
+            guna2CircleProgressBar1.Controls.Add(lblAlunos);
             guna2CircleProgressBar1.Controls.Add(pictureBox1);
             guna2CircleProgressBar1.FillColor = Color.FromArgb(200, 213, 218, 223);
             guna2CircleProgressBar1.Font = new Font("Segoe UI", 12F);
@@ -98,22 +98,22 @@
             guna2CircleProgressBar1.Location = new Point(75, 188);
             guna2CircleProgressBar1.Minimum = 0;
             guna2CircleProgressBar1.Name = "guna2CircleProgressBar1";
-            guna2CircleProgressBar1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2CircleProgressBar1.ShadowDecoration.CustomizableEdges = customizableEdges3;
             guna2CircleProgressBar1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CircleProgressBar1.Size = new Size(218, 218);
             guna2CircleProgressBar1.TabIndex = 8;
             guna2CircleProgressBar1.Text = "guna2CircleProgressBar1";
             // 
-            // label3
+            // lblAlunos
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(140, 10, 126);
-            label3.Font = new Font("Century Gothic", 15F);
-            label3.Location = new Point(93, 152);
-            label3.Name = "label3";
-            label3.Size = new Size(32, 23);
-            label3.TabIndex = 10;
-            label3.Text = "99";
+            lblAlunos.AutoSize = true;
+            lblAlunos.BackColor = Color.FromArgb(140, 10, 126);
+            lblAlunos.Font = new Font("Century Gothic", 15F);
+            lblAlunos.Location = new Point(93, 152);
+            lblAlunos.Name = "lblAlunos";
+            lblAlunos.Size = new Size(32, 23);
+            lblAlunos.TabIndex = 10;
+            lblAlunos.Text = "99";
             // 
             // pictureBox1
             // 
@@ -140,12 +140,12 @@
             // guna2PictureBox2
             // 
             guna2PictureBox2.BorderRadius = 20;
-            guna2PictureBox2.CustomizableEdges = customizableEdges13;
+            guna2PictureBox2.CustomizableEdges = customizableEdges4;
             guna2PictureBox2.FillColor = Color.FromArgb(140, 10, 126);
             guna2PictureBox2.ImageRotate = 0F;
             guna2PictureBox2.Location = new Point(371, 105);
             guna2PictureBox2.Name = "guna2PictureBox2";
-            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2PictureBox2.ShadowDecoration.CustomizableEdges = customizableEdges5;
             guna2PictureBox2.Size = new Size(226, 346);
             guna2PictureBox2.TabIndex = 5;
             guna2PictureBox2.TabStop = false;
@@ -153,7 +153,7 @@
             // guna2CircleProgressBar2
             // 
             guna2CircleProgressBar2.BackColor = Color.FromArgb(140, 10, 126);
-            guna2CircleProgressBar2.Controls.Add(label4);
+            guna2CircleProgressBar2.Controls.Add(lblCursos);
             guna2CircleProgressBar2.Controls.Add(pictureBox2);
             guna2CircleProgressBar2.FillColor = Color.FromArgb(200, 213, 218, 223);
             guna2CircleProgressBar2.Font = new Font("Segoe UI", 12F);
@@ -161,22 +161,22 @@
             guna2CircleProgressBar2.Location = new Point(374, 188);
             guna2CircleProgressBar2.Minimum = 0;
             guna2CircleProgressBar2.Name = "guna2CircleProgressBar2";
-            guna2CircleProgressBar2.ShadowDecoration.CustomizableEdges = customizableEdges15;
+            guna2CircleProgressBar2.ShadowDecoration.CustomizableEdges = customizableEdges6;
             guna2CircleProgressBar2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CircleProgressBar2.Size = new Size(218, 218);
             guna2CircleProgressBar2.TabIndex = 8;
             guna2CircleProgressBar2.Text = "guna2CircleProgressBar1";
             // 
-            // label4
+            // lblCursos
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.FromArgb(140, 10, 126);
-            label4.Font = new Font("Century Gothic", 15F);
-            label4.Location = new Point(93, 152);
-            label4.Name = "label4";
-            label4.Size = new Size(32, 23);
-            label4.TabIndex = 10;
-            label4.Text = "99";
+            lblCursos.AutoSize = true;
+            lblCursos.BackColor = Color.FromArgb(140, 10, 126);
+            lblCursos.Font = new Font("Century Gothic", 15F);
+            lblCursos.Location = new Point(96, 152);
+            lblCursos.Name = "lblCursos";
+            lblCursos.Size = new Size(32, 23);
+            lblCursos.TabIndex = 10;
+            lblCursos.Text = "99";
             // 
             // pictureBox2
             // 
@@ -194,7 +194,7 @@
             label5.BackColor = Color.FromArgb(140, 10, 126);
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(418, 129);
+            label5.Location = new Point(421, 129);
             label5.Name = "label5";
             label5.Size = new Size(125, 21);
             label5.TabIndex = 9;
@@ -203,12 +203,12 @@
             // guna2PictureBox3
             // 
             guna2PictureBox3.BorderRadius = 20;
-            guna2PictureBox3.CustomizableEdges = customizableEdges16;
+            guna2PictureBox3.CustomizableEdges = customizableEdges7;
             guna2PictureBox3.FillColor = Color.FromArgb(140, 10, 126);
             guna2PictureBox3.ImageRotate = 0F;
             guna2PictureBox3.Location = new Point(662, 105);
             guna2PictureBox3.Name = "guna2PictureBox3";
-            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges17;
+            guna2PictureBox3.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2PictureBox3.Size = new Size(226, 346);
             guna2PictureBox3.TabIndex = 5;
             guna2PictureBox3.TabStop = false;
@@ -216,7 +216,7 @@
             // guna2CircleProgressBar3
             // 
             guna2CircleProgressBar3.BackColor = Color.FromArgb(140, 10, 126);
-            guna2CircleProgressBar3.Controls.Add(label6);
+            guna2CircleProgressBar3.Controls.Add(lblUnidades);
             guna2CircleProgressBar3.Controls.Add(pictureBox3);
             guna2CircleProgressBar3.FillColor = Color.FromArgb(200, 213, 218, 223);
             guna2CircleProgressBar3.Font = new Font("Segoe UI", 12F);
@@ -224,22 +224,22 @@
             guna2CircleProgressBar3.Location = new Point(665, 188);
             guna2CircleProgressBar3.Minimum = 0;
             guna2CircleProgressBar3.Name = "guna2CircleProgressBar3";
-            guna2CircleProgressBar3.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2CircleProgressBar3.ShadowDecoration.CustomizableEdges = customizableEdges9;
             guna2CircleProgressBar3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             guna2CircleProgressBar3.Size = new Size(218, 218);
             guna2CircleProgressBar3.TabIndex = 8;
             guna2CircleProgressBar3.Text = "guna2CircleProgressBar1";
             // 
-            // label6
+            // lblUnidades
             // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.FromArgb(140, 10, 126);
-            label6.Font = new Font("Century Gothic", 15F);
-            label6.Location = new Point(93, 152);
-            label6.Name = "label6";
-            label6.Size = new Size(32, 23);
-            label6.TabIndex = 10;
-            label6.Text = "99";
+            lblUnidades.AutoSize = true;
+            lblUnidades.BackColor = Color.FromArgb(140, 10, 126);
+            lblUnidades.Font = new Font("Century Gothic", 15F);
+            lblUnidades.Location = new Point(93, 152);
+            lblUnidades.Name = "lblUnidades";
+            lblUnidades.Size = new Size(32, 23);
+            lblUnidades.TabIndex = 10;
+            lblUnidades.Text = "99";
             // 
             // pictureBox3
             // 
@@ -276,7 +276,7 @@
             Controls.Add(guna2PictureBox3);
             Controls.Add(guna2PictureBox2);
             Controls.Add(guna2PictureBox1);
-            Controls.Add(label1);
+            Controls.Add(lblBemVindo);
             Name = "ucHome";
             Size = new Size(975, 451);
             Load += ucHome_Load;
@@ -299,19 +299,19 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Label label1;
+        private Label lblBemVindo;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar1;
-        private Label label3;
+        private Label lblAlunos;
         private PictureBox pictureBox1;
         private Label label2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar2;
-        private Label label4;
+        private Label lblCursos;
         private PictureBox pictureBox2;
         private Label label5;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar3;
-        private Label label6;
+        private Label lblUnidades;
         private PictureBox pictureBox3;
         private Label label7;
     }
