@@ -23,13 +23,13 @@ namespace TransformeseApp2.BLL
             if (string.IsNullOrWhiteSpace(usuario.Nome))
             {
                 throw new Exception("Nome é obrigatório!");
-            } 
-            
+            }
+
             if (string.IsNullOrWhiteSpace(usuario.Login))
             {
                 throw new Exception("Login é obrigatório!");
-            }            
-            
+            }
+
             if (string.IsNullOrWhiteSpace(usuario.Senha))
             {
                 throw new Exception("Senha é obrigatório!");
@@ -45,6 +45,33 @@ namespace TransformeseApp2.BLL
                 throw new Exception("Usuário não encontrado!");
 
             usuario.Senha = novaSenha;
+        }
+
+        public List<UsuarioDTO> ListarUsuarios() => Database.Usuarios;
+        public void RemoverUsuario(int id)
+        {
+            var usuario = Database.Usuarios.FirstOrDefault(aluno => aluno.Id == id);
+            if (usuario == null)
+            {
+                throw new Exception("Usuário não encontrado.");
+            }
+
+            Database.Usuarios.Remove(usuario);
+        }
+
+        public void AtualizarUsuario(UsuarioDTO usuarioDTO)
+        {
+            var usuarioExistente = Database.Usuarios.FirstOrDefault(usuario => usuario.Id == usuarioDTO.Id);
+            if (usuarioExistente == null)
+                throw new Exception("Usuário não encontrado.");
+
+            if (string.IsNullOrWhiteSpace(usuarioDTO.Nome))
+                throw new Exception("Nome é obrigatório.");
+
+
+            // Atualiza os campos do aluno
+            usuarioExistente.Nome = usuarioDTO.Nome;
+            usuarioExistente.Login = usuarioDTO.Login;
         }
     }
 

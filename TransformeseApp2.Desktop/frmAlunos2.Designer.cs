@@ -115,6 +115,7 @@
             btnAtualizar.DisabledState.CustomBorderColor = Color.DarkGray;
             btnAtualizar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnAtualizar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnAtualizar.Enabled = false;
             btnAtualizar.FillColor = Color.FromArgb(140, 10, 126);
             btnAtualizar.Font = new Font("Segoe UI", 9F);
             btnAtualizar.ForeColor = Color.White;
@@ -143,6 +144,7 @@
             btnPesquisar.Size = new Size(78, 45);
             btnPesquisar.TabIndex = 3;
             btnPesquisar.Text = "Pesquisar";
+            btnPesquisar.Click += btnPesquisar_Click;
             // 
             // guna2BorderlessForm1
             // 
@@ -293,6 +295,7 @@
             dgAlunos.ThemeStyle.RowsStyle.Height = 25;
             dgAlunos.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             dgAlunos.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dgAlunos.CellClick += dgAlunos_CellClick_1;
             // 
             // txtNome
             // 

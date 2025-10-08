@@ -185,14 +185,38 @@ namespace TransformeseApp2.Desktop
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Erro: {ex.Message}");
-               
+
                 }
 
             }
         }
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            BuscarAluno();
+        }
+
+        private void dgAlunos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == 0)
+            {
+                DataGridViewRow row = dgAlunos.Rows[e.RowIndex];
+
+                alunoSelecionadoId = Convert.ToInt32(row.Cells["Id"].Value);
+                txtNome.Text = row.Cells["Nome"].Value.ToString();
+
+                string nomeCurso = row.Cells["Curso"].Value.ToString();
+                string nomeUnidade = row.Cells["Unidade"].Value.ToString();
+
+                cboCursos.SelectedValue = Database.Cursos.First(c => c.Nome == nomeCurso).Id;
+                cboUnidade.SelectedValue = Database.Unidades.First(u => u.Nome == nomeUnidade).Id;
+
+                btnAtualizar.Enabled = true;
+            }
         }
     }
 }

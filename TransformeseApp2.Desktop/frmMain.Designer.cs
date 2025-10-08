@@ -164,6 +164,7 @@
             btnAlunos.Size = new Size(130, 45);
             btnAlunos.TabIndex = 3;
             btnAlunos.Text = "Alunos";
+            btnAlunos.Click += btnAlunos_Click;
             // 
             // btnCursos
             // 
@@ -206,6 +207,7 @@
             btnUsuarios.Size = new Size(130, 45);
             btnUsuarios.TabIndex = 1;
             btnUsuarios.Text = "Usuários";
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnHome
             // 
