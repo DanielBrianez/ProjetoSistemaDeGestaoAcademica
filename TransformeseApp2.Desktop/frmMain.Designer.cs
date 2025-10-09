@@ -69,6 +69,7 @@
             guna2AnimateWindow2 = new Guna.UI2.WinForms.Guna2AnimateWindow(components);
             npNotifica = new Guna.UI2.WinForms.Guna2NotificationPaint(components);
             mdNotifica = new Guna.UI2.WinForms.Guna2MessageDialog();
+            mdSair = new Guna.UI2.WinForms.Guna2MessageDialog();
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
@@ -122,6 +123,7 @@
             btnSair.Size = new Size(130, 45);
             btnSair.TabIndex = 5;
             btnSair.Text = "Sair";
+            btnSair.Click += btnSair_Click;
             // 
             // btnUnidades
             // 
@@ -349,6 +351,15 @@
             mdNotifica.Style = Guna.UI2.WinForms.MessageDialogStyle.Default;
             mdNotifica.Text = null;
             // 
+            // mdSair
+            // 
+            mdSair.Buttons = Guna.UI2.WinForms.MessageDialogButtons.YesNo;
+            mdSair.Caption = "Deseja sair?";
+            mdSair.Icon = Guna.UI2.WinForms.MessageDialogIcon.None;
+            mdSair.Parent = this;
+            mdSair.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
+            mdSair.Text = null;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(10F, 21F);
@@ -400,5 +411,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnFechar;
         private Guna.UI2.WinForms.Guna2NotificationPaint npNotifica;
         private Guna.UI2.WinForms.Guna2MessageDialog mdNotifica;
+        private Guna.UI2.WinForms.Guna2MessageDialog mdSair;
     }
 }

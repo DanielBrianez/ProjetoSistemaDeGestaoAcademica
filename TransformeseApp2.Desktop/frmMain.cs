@@ -25,7 +25,21 @@ namespace TransformeseApp2.Desktop
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            fecharMain();
+            try
+            {
+                var confirmacao = mdSair.Show("Deseja realmente sair?");
+
+                if (confirmacao == DialogResult.Yes)
+                {
+                    frmLogin principal = new frmLogin();
+                    principal.Show();
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                mdNotifica.Show($"Erro no sistema: {ex.Message}");
+            }
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -47,7 +61,7 @@ namespace TransformeseApp2.Desktop
             lblUsuario.Top = pbFoto.Bottom + 4;
             lblUsuario.Text = Session.UsuarioLogado.Nome ?? "Usuário";
 
-            if (!string.IsNullOrEmpty(Session.UsuarioLogado.UrlFoto)&& File.Exists((Session.UsuarioLogado.UrlFoto)))
+            if (!string.IsNullOrEmpty(Session.UsuarioLogado.UrlFoto) && File.Exists((Session.UsuarioLogado.UrlFoto)))
             {
                 pbFoto.Image = Image.FromFile(Session.UsuarioLogado.UrlFoto);
             }
@@ -85,7 +99,28 @@ namespace TransformeseApp2.Desktop
 
         private void btnAlunos_Click(object sender, EventArgs e)
         {
+            panelConteudo.Controls.Clear();
+            AbrirUserControl(new ucAlunos());
+        }
 
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var confirmacao = mdSair.Show("Deseja realmente sair?");
+
+                if (confirmacao == DialogResult.Yes)
+                {
+                    frmLogin principal = new frmLogin();
+                    principal.Show();
+                    Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                mdNotifica.Show($"Erro no sistema: { ex.Message}");
+            }
+                
         }
     }
 }
