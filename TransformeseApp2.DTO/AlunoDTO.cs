@@ -6,6 +6,7 @@
         public UnidadeDTO? Unidade { get; set; }
         public int CursoId { get; set; }
         public int UnidadeId { get; set; }
+        public string? FotoCaminho { get; set; }
 
         public override void ExibirInfo()
         {

@@ -118,9 +118,21 @@ namespace TransformeseApp2.Desktop
             }
             catch (Exception ex)
             {
-                mdNotifica.Show($"Erro no sistema: { ex.Message}");
+                mdNotifica.Show($"Erro no sistema: {ex.Message}");
             }
-                
+
+        }
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            panelConteudo.Controls.Clear();
+            AbrirUserControl(new ucCursos());
+        }
+
+        private void btnUnidades_Click(object sender, EventArgs e)
+        {
+            panelConteudo.Controls.Clear();
+            AbrirUserControl(new ucUnidades());
         }
     }
 }

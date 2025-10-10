@@ -73,6 +73,20 @@ namespace TransformeseApp2.Desktop
                 btnEntrar.PerformClick();
             }
         }
+
+        private void chkSenha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSenha.Checked)
+            {
+                txtSenha.UseSystemPasswordChar = false;
+                chkSenha.Text = "Ocultar";
+            }
+            else
+            {
+                txtSenha.UseSystemPasswordChar = true;
+                chkSenha.Text = "Exibir";
+            }
+        }
     }
 }
 

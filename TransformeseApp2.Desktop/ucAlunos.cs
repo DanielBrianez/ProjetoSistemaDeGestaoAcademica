@@ -27,6 +27,7 @@ namespace TransformeseApp2.Desktop
                     Nome = txtNome.Text,
                     CursoId = (int)cboCursos.SelectedValue,
                     UnidadeId = (int)cboUnidade.SelectedValue,
+                    FotoCaminho = txtFotoCaminho.Text
                 };
 
                 alunoBLL.CadastrarAluno(aluno);
@@ -43,17 +44,58 @@ namespace TransformeseApp2.Desktop
 
         private void AtualizarGrid()
         {
-            var lista = alunoBLL.ListarAlunos()
-                                .Select(aluno => new
-                                {
-                                    aluno.Id,
-                                    aluno.Nome,
-                                    Curso = Database.Cursos.First(curso => curso.Id == aluno.CursoId).Nome,
-                                    Unidade = Database.Unidades.First(unidade => unidade.Id == aluno.UnidadeId).Nome
-                                }).ToList();
+            dgAlunos.Columns.Clear();
+            dgAlunos.AutoGenerateColumns = false;
+            dgAlunos.RowTemplate.Height = 60;
+            dgAlunos.AllowUserToAddRows = false;
 
-            dgAlunos.DataSource = lista;
+            var colFoto = new DataGridViewImageColumn
+            {
+                HeaderText = "Foto",
+                Name = "Foto",
+                DataPropertyName = "Foto",
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            };
 
+            dgAlunos.Columns.Add(colFoto);
+
+            dgAlunos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "ID", Name = "Id" });
+            dgAlunos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome", Name = "Nome" });
+            dgAlunos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Curso", HeaderText = "Curso", Name = "Curso" });
+            dgAlunos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Unidade", HeaderText = "Unidade", Name = "Unidade" });
+            dgAlunos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "UrlFoto", HeaderText = "UrlFoto", Name = "UrlFoto" });
+
+            var alunos = alunoBLL.ListarAlunos();
+
+            var dt = new DataTable();
+            dt.Columns.Add("Id", typeof(int));
+            dt.Columns.Add("Nome", typeof(string));
+            dt.Columns.Add("Curso", typeof(string));
+            dt.Columns.Add("Unidade", typeof(string));
+            dt.Columns.Add("Foto", typeof(Image));
+            dt.Columns.Add("URLFoto", typeof(string));
+
+            foreach (var a in alunos)
+            {
+                Image? img = null;
+                if (string.IsNullOrEmpty(a.UrlFoto) && File.Exists(a.UrlFoto))
+                {
+                    try
+                    {
+                        using (var fs = new FileStream(a.UrlFoto, FileMode.Open, FileAccess.Read))
+                        {
+                            img = Image.FromStream(fs);
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        img = null;
+                    }
+                }
+                dt.Rows.Add(img, a.Id, a.Nome, a.Curso, a.Unidade, a.UrlFoto);
+            }
+            dgAlunos.DataSource = dt;
         }
 
         private void BuscarAluno()
@@ -120,7 +162,8 @@ namespace TransformeseApp2.Desktop
                         Id = alunoSelecionadoId.Value,
                         Nome = txtNome.Text,
                         CursoId = (int)cboCursos.SelectedValue,
-                        UnidadeId = (int)cboUnidade.SelectedValue
+                        UnidadeId = (int)cboUnidade.SelectedValue,
+                        FotoCaminho = txtFotoCaminho.Text
                     };
                     alunoBLL.AtualizarAluno(alunoAtualizado);
                     MessageBox.Show($"Aluno {alunoAtualizado.Nome} atualizado com sucesso!");
@@ -138,7 +181,7 @@ namespace TransformeseApp2.Desktop
 
         private void dgAlunos_CellClick_2(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex == 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dgAlunos.Rows[e.RowIndex];
 
@@ -150,6 +193,25 @@ namespace TransformeseApp2.Desktop
 
                 cboCursos.SelectedValue = Database.Cursos.First(c => c.Nome == nomeCurso).Id;
                 cboUnidade.SelectedValue = Database.Unidades.First(u => u.Nome == nomeUnidade).Id;
+
+                // Busca o aluno completo na base
+                var aluno = Database.Alunos.FirstOrDefault(a => a.Id == alunoSelecionadoId);
+
+                if (aluno != null && !string.IsNullOrEmpty(aluno.FotoCaminho) && File.Exists(aluno.FotoCaminho))
+                {
+                    pbFoto.Image = null; // <-- força a limpeza antes de carregar
+                    using (var temp = Image.FromFile(aluno.FotoCaminho))
+                    {
+                        pbFoto.Image = new Bitmap(temp);
+                    }
+
+                    txtFotoCaminho.Text = aluno.FotoCaminho;
+                }
+                else
+                {
+                    pbFoto.Image = null;
+                    txtFotoCaminho.Text = string.Empty;
+                }
 
                 btnAtualizar.Enabled = true;
             }
@@ -202,24 +264,47 @@ namespace TransformeseApp2.Desktop
 
         private void pbFoto_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(diretorio))
+            try
             {
-                Directory.CreateDirectory("diretorio");
+                if (!Directory.Exists(diretorio))
+                {
+                    Directory.CreateDirectory(diretorio);
+                }
+
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    InitialDirectory = diretorioImagens,
+                    Filter = "Arquivos de imagens | *.jpg;*.jpeg;*.png;*.gif",
+                    Title = "Selecione a imagem de perfil"
+                };
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string nomeArquivoImagem = openFileDialog.FileName;
+
+                    // Exibe a imagem de forma segura (sem travar o arquivo)
+                    using (var temp = Image.FromFile(nomeArquivoImagem))
+                    {
+                        pbFoto.Image = new Bitmap(temp);
+                    }
+
+                    // Salva o caminho da foto
+                    txtFotoCaminho.Text = nomeArquivoImagem;
+
+                    // Atualiza o aluno selecionado, se houver
+                    if (alunoSelecionadoId.HasValue)
+                    {
+                        var aluno = Database.Alunos.FirstOrDefault(a => a.Id == alunoSelecionadoId.Value);
+                        if (aluno != null)
+                        {
+                            aluno.FotoCaminho = nomeArquivoImagem;
+                        }
+                    }
+                }
             }
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = diretorioImagens;
-            openFileDialog.Filter = "Arquivos de imagens | *.jpg;*.jpeg;*.png;*.gif";
-            openFileDialog.Title = "Selecione a imagem de perfil";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            catch (Exception ex)
             {
-                string nomeArquivoImagem = openFileDialog.FileName;
-
-                //Exibe a imagem escolhida no PictureBox
-                pbFoto.Image = Image.FromFile(nomeArquivoImagem);
-                //Salva o Caminho da foto
-                txtFotoCaminho.Text = nomeArquivoImagem;
+                MessageBox.Show($"Erro ao carregar imagem: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

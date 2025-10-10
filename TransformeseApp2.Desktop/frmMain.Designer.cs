@@ -145,6 +145,7 @@
             btnUnidades.Size = new Size(130, 45);
             btnUnidades.TabIndex = 4;
             btnUnidades.Text = "Unidades";
+            btnUnidades.Click += btnUnidades_Click;
             // 
             // btnAlunos
             // 
@@ -188,6 +189,7 @@
             btnCursos.Size = new Size(130, 45);
             btnCursos.TabIndex = 2;
             btnCursos.Text = "Cursos";
+            btnCursos.Click += btnCursos_Click;
             // 
             // btnUsuarios
             // 

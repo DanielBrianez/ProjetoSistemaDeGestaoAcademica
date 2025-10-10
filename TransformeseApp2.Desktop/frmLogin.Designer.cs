@@ -63,6 +63,7 @@
             btnKill = new Guna.UI2.WinForms.Guna2CircleButton();
             guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(components);
             mdEntrar = new Guna.UI2.WinForms.Guna2MessageDialog();
+            chkSenha = new Guna.UI2.WinForms.Guna2CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -357,12 +358,31 @@
             mdEntrar.Style = Guna.UI2.WinForms.MessageDialogStyle.Dark;
             mdEntrar.Text = null;
             // 
+            // chkSenha
+            // 
+            chkSenha.AutoSize = true;
+            chkSenha.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            chkSenha.CheckedState.BorderRadius = 0;
+            chkSenha.CheckedState.BorderThickness = 0;
+            chkSenha.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            chkSenha.Location = new Point(498, 402);
+            chkSenha.Name = "chkSenha";
+            chkSenha.Size = new Size(57, 21);
+            chkSenha.TabIndex = 9;
+            chkSenha.Text = "Exibir";
+            chkSenha.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            chkSenha.UncheckedState.BorderRadius = 0;
+            chkSenha.UncheckedState.BorderThickness = 0;
+            chkSenha.UncheckedState.FillColor = Color.FromArgb(125, 137, 149);
+            chkSenha.CheckedChanged += chkSenha_CheckedChanged;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(907, 580);
+            Controls.Add(chkSenha);
             Controls.Add(btnKill);
             Controls.Add(lblEsqueciSenha);
             Controls.Add(btnEntrar);
@@ -420,5 +440,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton btnKill;
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2MessageDialog mdEntrar;
+        private Guna.UI2.WinForms.Guna2CheckBox chkSenha;
     }
 }

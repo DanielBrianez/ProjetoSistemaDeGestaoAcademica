@@ -1,19 +1,23 @@
-﻿using System.Linq.Expressions;
+﻿using System.Data;
 using TransformeseApp2.BLL;
 using TransformeseApp2.DAL;
 using TransformeseApp2.DTO;
 
 namespace TransformeseApp2.Desktop
 {
-    public partial class frmCursos : Form
+    public partial class ucCursos : UserControl
     {
+        
         private readonly CursoBLL cursoBLL = new();
         private int? cursoSelecionadoId = null;
-
-
-        public frmCursos()
+        public ucCursos()
         {
             InitializeComponent();
+        }
+
+        private void ucCursos_Load(object sender, EventArgs e)
+        {
+            AtualizarGrid();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -37,20 +41,6 @@ namespace TransformeseApp2.Desktop
             {
                 MessageBox.Show($"Erro: {erro.Message}");
             }
-        }
-
-        private void AtualizarGrid()
-        {
-            var lista = cursoBLL.ListarCursos()
-                                .Select(curso => new
-                                {
-                                    curso.Id,
-                                    curso.Nome,
-                                    CargaHoraria = curso.CargaHoraria
-                                }).ToList();
-
-            dgCursos.DataSource = lista;
-
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -88,36 +78,61 @@ namespace TransformeseApp2.Desktop
             }
         }
 
-        private void dgCursos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            AtualizarGrid();
-        }
-
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            if (cursoSelecionadoId != null)
+            dgCursos.Columns.Clear();
+            dgCursos.AutoGenerateColumns = false;
+            dgCursos.RowTemplate.Height = 60;
+            dgCursos.AllowUserToAddRows = false;
+
+            dgCursos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "ID", Name = "Id" });
+            dgCursos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome", Name = "Nome" });
+            dgCursos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Carga Horária", HeaderText = "Carga Horária", Name = "Carga Horária" });
+
+            var cursos = cursoBLL.ListarCursos();
+
+            var dt = new DataTable();
+            dt.Columns.Add("Id", typeof(int));
+            dt.Columns.Add("Nome", typeof(string));
+            dt.Columns.Add("Carga Horária", typeof(string));
+
+            foreach (var c in cursos)
             {
-                btnAtualizar.Enabled = true;
-                try
-                {
-                    var cursoAtualizado = new CursoDTO
-                    {
-                        Id = cursoSelecionadoId.Value,
-                        Nome = txtNome.Text,
-                        CargaHoraria = cursoSelecionadoId.Value,
-                    };
-                    cursoBLL.AtualizarCurso(cursoAtualizado);
-                    MessageBox.Show($"Aluno {cursoAtualizado.Nome} atualizado com sucesso!");
-                    txtNome.Clear();
-                    cursoSelecionadoId = null;
-                    AtualizarGrid();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro: {ex.Message}");
-                    throw;
-                }
+                dt.Rows.Add(img, c.Id, c.Nome, c.CargaHoraria);
             }
+            dgCursos.DataSource = dt;
+        }
+        private void AtualizarGrid()
+        {
+            var lista = cursoBLL.ListarCursos()
+                                .Select(curso => new
+                                {
+                                    curso.Id,
+                                    curso.Nome,
+                                    curso.CargaHoraria
+                                }).ToList();
+
+            dgCursos.DataSource = lista;
+
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            BuscarCurso();
+        }
+        private void BuscarCurso()
+        {
+            string termo = txtBusca.Text.Trim().ToLower();
+
+            var filtrados = cursoBLL.ListarCursos()
+                                         .Where(curso => curso.Nome.ToLower().Contains(termo))
+                                         .Select(curso => new
+                                         {
+                                             curso.Id,
+                                             curso.Nome,
+                                             curso.CargaHoraria
+                                         }).ToList();
+            dgCursos.DataSource = filtrados;
         }
 
         private void dgCursos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -136,6 +151,11 @@ namespace TransformeseApp2.Desktop
 
                 btnAtualizar.Enabled = true;
             }
+        }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            BuscarCurso();
         }
     }
 }

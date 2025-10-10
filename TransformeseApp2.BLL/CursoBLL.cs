@@ -33,9 +33,6 @@ namespace TransformeseApp2.BLL
             cursoExistente.CargaHoraria = cursoDTO.CargaHoraria;
         }
 
-
-
-
         public void RemoverCurso(int id)
         {
             var curso = Database.Cursos.FirstOrDefault(curso => curso.Id == id);

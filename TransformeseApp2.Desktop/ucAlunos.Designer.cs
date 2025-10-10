@@ -72,7 +72,7 @@
             guna2HtmlLabel4.BackColor = Color.Transparent;
             guna2HtmlLabel4.Font = new Font("Century Gothic", 20F, FontStyle.Bold);
             guna2HtmlLabel4.ForeColor = Color.Black;
-            guna2HtmlLabel4.Location = new Point(436, 53);
+            guna2HtmlLabel4.Location = new Point(497, 53);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             guna2HtmlLabel4.Size = new Size(262, 34);
             guna2HtmlLabel4.TabIndex = 30;
@@ -119,7 +119,7 @@
             btnPesquisar.FillColor = Color.FromArgb(140, 10, 126);
             btnPesquisar.Font = new Font("Segoe UI", 9F);
             btnPesquisar.ForeColor = Color.White;
-            btnPesquisar.Location = new Point(856, 121);
+            btnPesquisar.Location = new Point(814, 80);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.ShadowDecoration.CustomizableEdges = customizableEdges2;
             btnPesquisar.Size = new Size(78, 45);
@@ -139,7 +139,7 @@
             btnAtualizar.FillColor = Color.FromArgb(140, 10, 126);
             btnAtualizar.Font = new Font("Segoe UI", 9F);
             btnAtualizar.ForeColor = Color.White;
-            btnAtualizar.Location = new Point(830, 398);
+            btnAtualizar.Location = new Point(814, 387);
             btnAtualizar.Name = "btnAtualizar";
             btnAtualizar.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnAtualizar.Size = new Size(104, 45);
@@ -158,7 +158,7 @@
             btnExcluir.FillColor = Color.FromArgb(140, 10, 126);
             btnExcluir.Font = new Font("Segoe UI", 9F);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(241, 398);
+            btnExcluir.Location = new Point(232, 387);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btnExcluir.Size = new Size(104, 45);
@@ -177,7 +177,7 @@
             btnCadastrar.FillColor = Color.FromArgb(140, 10, 126);
             btnCadastrar.Font = new Font("Segoe UI", 9F);
             btnCadastrar.ForeColor = Color.White;
-            btnCadastrar.Location = new Point(6, 398);
+            btnCadastrar.Location = new Point(9, 387);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btnCadastrar.Size = new Size(104, 45);
@@ -208,10 +208,10 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dgAlunos.DefaultCellStyle = dataGridViewCellStyle3;
             dgAlunos.GridColor = Color.FromArgb(231, 229, 255);
-            dgAlunos.Location = new Point(351, 172);
+            dgAlunos.Location = new Point(345, 131);
             dgAlunos.Name = "dgAlunos";
             dgAlunos.RowHeadersVisible = false;
-            dgAlunos.Size = new Size(583, 220);
+            dgAlunos.Size = new Size(576, 250);
             dgAlunos.TabIndex = 31;
             dgAlunos.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             dgAlunos.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -306,12 +306,12 @@
             txtBusca.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBusca.Font = new Font("Segoe UI", 9F);
             txtBusca.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBusca.Location = new Point(351, 121);
+            txtBusca.Location = new Point(345, 80);
             txtBusca.Name = "txtBusca";
             txtBusca.PlaceholderText = "Pesquisa de Aluno";
             txtBusca.SelectedText = "";
             txtBusca.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            txtBusca.Size = new Size(499, 45);
+            txtBusca.Size = new Size(463, 45);
             txtBusca.TabIndex = 32;
             txtBusca.TextChanged += txtBusca_TextChanged_1;
             // 

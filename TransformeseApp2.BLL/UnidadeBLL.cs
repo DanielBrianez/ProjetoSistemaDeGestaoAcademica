@@ -19,5 +19,29 @@ namespace TransformeseApp2.BLL
         {
             return _unidades.FirstOrDefault(unidade => unidade.Id == id);
         }
+        public void RemoverUnidade(int id)
+        {
+            var unidade = Database.Unidades.FirstOrDefault(unidade => unidade.Id == id);
+            if (unidade == null)
+            {
+                throw new Exception("Unidade não encontrada.");
+            }
+
+            Database.Unidades.Remove(unidade);
+        }
+
+        public void AtualizarUnidade(UnidadeDTO unidadeDTO)
+        {
+            var unidadeExistente = Database.Unidades.FirstOrDefault(unidade => unidade.Id == unidadeDTO.Id);
+            if (unidadeExistente == null)
+                throw new Exception("Unidade não encontrada.");
+
+            if (string.IsNullOrWhiteSpace(unidadeDTO.Nome))
+                throw new Exception("Nome é obrigatório.");
+
+            unidadeExistente.Nome = unidadeDTO.Nome;
+            unidadeExistente.Id = unidadeDTO.Id;
+            unidadeExistente.Endereco = unidadeDTO.Endereco;
+        }
     }
 }
