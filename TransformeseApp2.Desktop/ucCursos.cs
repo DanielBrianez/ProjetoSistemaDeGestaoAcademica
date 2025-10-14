@@ -98,7 +98,7 @@ namespace TransformeseApp2.Desktop
 
             foreach (var c in cursos)
             {
-                dt.Rows.Add(img, c.Id, c.Nome, c.CargaHoraria);
+                dt.Rows.Add(c.Id, c.Nome, c.CargaHoraria);
             }
             dgCursos.DataSource = dt;
         }
