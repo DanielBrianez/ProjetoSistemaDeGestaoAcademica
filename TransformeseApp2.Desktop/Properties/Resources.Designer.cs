@@ -149,7 +149,15 @@ namespace TransformeseApp2.Desktop.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+        internal static System.Drawing.Bitmap lightmode
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("lightmode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>

@@ -39,5 +39,6 @@ namespace TransformeseApp2.Desktop
         {
             lblUnidades.Text = Database.Unidades.Count.ToString();
         }
+
     }
 }

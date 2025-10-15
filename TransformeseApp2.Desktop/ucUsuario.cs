@@ -20,7 +20,7 @@ namespace TransformeseApp2.Desktop
 
         private void pbFoto_Click(object sender, EventArgs e)
         {
-            try
+                try
             {
                 if (!Directory.Exists(diretorio))
                 {

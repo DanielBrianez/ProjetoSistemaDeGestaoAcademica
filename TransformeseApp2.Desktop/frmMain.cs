@@ -134,5 +134,79 @@ namespace TransformeseApp2.Desktop
             panelConteudo.Controls.Clear();
             AbrirUserControl(new ucUnidades());
         }
+
+        private void pbColorMode_Click(object sender, EventArgs e)
+        {
+            bool isDarkMode = this.BackColor == Color.FromArgb(32, 32, 32);
+
+            if (isDarkMode)
+            {
+                // 🌞 MODO CLARO
+                Color lightFormColor = SystemColors.Control;
+                Color lightPanelColor = Color.WhiteSmoke;
+                Color lightTextColor = Color.Black;
+
+                // Cores básicas
+                this.BackColor = lightFormColor;
+                this.ForeColor = lightTextColor;
+                panelConteudo.BackColor = lightPanelColor;
+
+                // Ajusta todos os controles
+                AplicarTema(this.Controls, lightPanelColor, lightTextColor, false);
+
+                pbColorMode.Image = Properties.Resources.darkmode; // ícone escuro
+            }
+            else
+            {
+                // 🌚 MODO ESCURO
+                Color darkFormColor = Color.FromArgb(32, 32, 32);
+                Color darkPanelColor = Color.FromArgb(45, 45, 45);
+                Color darkTextColor = Color.WhiteSmoke;
+
+                // Cores básicas
+                this.BackColor = darkFormColor;
+                this.ForeColor = darkTextColor;
+                panelConteudo.BackColor = darkPanelColor;
+
+                // Ajusta todos os controles
+                AplicarTema(this.Controls, darkPanelColor, darkTextColor, true);
+
+                pbColorMode.Image = Properties.Resources.lightmode; // ícone claro
+            }
+        }
+
+        // 🔧 Função auxiliar para aplicar o tema a todos os controles recursivamente
+        private void AplicarTema(Control.ControlCollection controls, Color backColor, Color foreColor, bool isDark)
+        {
+            foreach (Control ctrl in controls)
+            {
+                switch (ctrl)
+                {
+                    case Panel pnl:
+                        pnl.BackColor = backColor;
+                        AplicarTema(pnl.Controls, backColor, foreColor, isDark);
+                        break;
+
+                    case Label lbl:
+                        lbl.ForeColor = foreColor;
+                        break;
+
+                    case Button btn:
+                        btn.BackColor = isDark ? Color.FromArgb(60, 60, 60) : Color.WhiteSmoke;
+                        btn.ForeColor = foreColor;
+                        break;
+
+                    case PictureBox pb:
+                        pb.BackColor = Color.Transparent; // evita blocos coloridos indesejados
+                        break;
+
+                    default:
+                        ctrl.ForeColor = foreColor;
+                        break;
+                }
+            }
+        }
+
     }
 }
+

@@ -263,7 +263,7 @@
             label1.Name = "label1";
             label1.Size = new Size(195, 52);
             label1.TabIndex = 4;
-            label1.Text = "Tecnologias que \r\nTransforma Vidas\r\n";
+            label1.Text = "Tecnologia que \r\nTransforma Vidas\r\n";
             // 
             // label2
             // 
