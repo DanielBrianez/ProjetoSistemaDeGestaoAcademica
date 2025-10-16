@@ -1,0 +1,23 @@
+[
+{
+"Id" : 1,
+"Nome" : "Daniel",
+"Login" : "danielbrianez",
+"Senha" : "123456",
+"UrlFoto" : "c:/User/images/Transformese"
+},
+{
+"Id" : 2,
+"Nome" : "Koda",
+"Login" : "kodaayo",
+"Senha" : "123456",
+"UrlFoto" : "c:/User/images/Transformese"
+},
+{
+"Id" : 3,
+"Nome" : "Maryana",
+"Login" : "olvra",
+"Senha" : "123456",
+"UrlFoto" : "c:/User/images/Transformese"
+}
+]

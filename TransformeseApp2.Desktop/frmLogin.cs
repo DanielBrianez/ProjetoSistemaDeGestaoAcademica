@@ -16,8 +16,8 @@ namespace TransformeseApp2.Desktop
             try
             {
                 var usuario = usuarioBLL.Login(txtUsuario.Text, txtSenha.Text);
-                Session.UsuarioLogado = usuario;
-                mdEntrar.Show($"Seja bem vindo(a) {Session.UsuarioLogado.Nome}!");
+                AppSession.UsuarioLogado = usuario;
+                mdEntrar.Show($"Seja bem vindo(a) {AppSession.UsuarioLogado.Nome}!");
 
                 frmMain principal = new frmMain();
                 principal.Show();

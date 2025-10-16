@@ -15,13 +15,13 @@ namespace TransformeseApp2.Desktop
 
         private void frmConfig_Load(object sender, EventArgs e)
         {
-            txtNome.Text = Session.UsuarioLogado.Nome;
-            txtUsuario.Text = Session.UsuarioLogado.Login;
-            txtSenha.Text = Session.UsuarioLogado.Senha;
+            txtNome.Text = AppSession.UsuarioLogado.Nome;
+            txtUsuario.Text = AppSession.UsuarioLogado.Login;
+            txtSenha.Text = AppSession.UsuarioLogado.Senha;
 
-            if (!string.IsNullOrEmpty(Session.UsuarioLogado.UrlFoto) && File.Exists(Session.UsuarioLogado.UrlFoto))
+            if (!string.IsNullOrEmpty(AppSession.UsuarioLogado.UrlFoto) && File.Exists(AppSession.UsuarioLogado.UrlFoto))
             {
-                pbFoto.Image = Image.FromFile(Session.UsuarioLogado.UrlFoto);
+                pbFoto.Image = Image.FromFile(AppSession.UsuarioLogado.UrlFoto);
             }
         }
 
@@ -60,7 +60,7 @@ namespace TransformeseApp2.Desktop
             {
                 var usuarioAtualizado = new UsuarioDTO
                 {
-                    Id = Session.UsuarioLogado.Id,
+                    Id = AppSession.UsuarioLogado.Id,
                     Nome = txtNome.Text,
                     Login = txtUsuario.Text,
                     Senha = txtSenha.Text,
@@ -70,7 +70,7 @@ namespace TransformeseApp2.Desktop
                 usuarioBLL.AtualizarUsuario(usuarioAtualizado);
 
                 // 🔁 Atualiza a sessão global
-                Session.AtualizarUsuarioLogado(usuarioAtualizado);
+                AppSession.AtualizarUsuarioLogado(usuarioAtualizado);
 
                 MessageBox.Show($"Usuário {usuarioAtualizado.Nome} atualizado com sucesso!");
                 Close();
@@ -86,7 +86,7 @@ namespace TransformeseApp2.Desktop
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            var usuario = Session.UsuarioLogado;
+            var usuario = AppSession.UsuarioLogado;
 
             if (usuario == null)
             {
@@ -95,15 +95,15 @@ namespace TransformeseApp2.Desktop
             }
 
             var confirma = MessageBox.Show(
-                $"{Session.UsuarioLogado.Nome}, deseja realmente excluir sua conta? Você será desconectado da sessão",
+                $"{AppSession.UsuarioLogado.Nome}, deseja realmente excluir sua conta? Você será desconectado da sessão",
                 "Confirmação", MessageBoxButtons.YesNo);
 
             if (confirma == DialogResult.Yes)
             {
-                usuarioBLL.RemoverUsuario(Session.UsuarioLogado.Id);
+                usuarioBLL.RemoverUsuario(AppSession.UsuarioLogado.Id);
             }
 
-            MessageBox.Show($"Usuário(s) {Session.UsuarioLogado.Nome} removido(s) com sucesso!", "Exclusão de Usuários", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"Usuário(s) {AppSession.UsuarioLogado.Nome} removido(s) com sucesso!", "Exclusão de Usuários", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Application.OpenForms.OfType<frmMain>().FirstOrDefault()?.Close();
             frmLogin frmLogin = new frmLogin();
             frmLogin.Show();

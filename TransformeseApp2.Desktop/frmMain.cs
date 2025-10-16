@@ -12,7 +12,7 @@ namespace TransformeseApp2.Desktop
         private void frmMain_Load(object sender, EventArgs e)
         {
             AbrirUserControl(new ucHome());
-            lblUsuario.Text = Session.UsuarioLogado.Nome ?? "Usuário";
+            lblUsuario.Text = AppSession.UsuarioLogado.Nome ?? "Usuário";
             AtualizarUsuarioLogado();
         }
         private void AbrirUserControl(UserControl uc)
@@ -59,11 +59,11 @@ namespace TransformeseApp2.Desktop
         {
             lblUsuario.Left = pbFoto.Left + (pbFoto.Width - lblUsuario.Width) / 2;
             lblUsuario.Top = pbFoto.Bottom + 4;
-            lblUsuario.Text = Session.UsuarioLogado.Nome ?? "Usuário";
+            lblUsuario.Text = AppSession.UsuarioLogado.Nome ?? "Usuário";
 
-            if (!string.IsNullOrEmpty(Session.UsuarioLogado.UrlFoto) && File.Exists((Session.UsuarioLogado.UrlFoto)))
+            if (!string.IsNullOrEmpty(AppSession.UsuarioLogado.UrlFoto) && File.Exists((AppSession.UsuarioLogado.UrlFoto)))
             {
-                pbFoto.Image = Image.FromFile(Session.UsuarioLogado.UrlFoto);
+                pbFoto.Image = Image.FromFile(AppSession.UsuarioLogado.UrlFoto);
             }
         }
 
