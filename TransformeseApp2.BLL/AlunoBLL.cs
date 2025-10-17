@@ -6,29 +6,33 @@ namespace TransformeseApp2.BLL
     public class AlunoBLL
     {
         private List<AlunoDTO> _alunos = Database.Alunos;
-        public void CadastrarAluno(AlunoDTO alunoDTO)
+        public void CadastrarAluno(AlunoDTO aluno)
         {
+            var alunos = Database.Alunos;
             //Validação antes de salvar o aluno
-            if (string.IsNullOrWhiteSpace(alunoDTO.Nome))
+            if (string.IsNullOrWhiteSpace(aluno.Nome))
                 throw new Exception("Nome do aluno é obrigatório.");
-            Database.Alunos.Add(alunoDTO);
+            Database.Alunos.Add(aluno);
+
+            alunos.Add(aluno);
+            Database.Alunos = alunos;
         }
         public List<AlunoDTO> ListarAlunos() => Database.Alunos;
 
-        public void AtualizarAluno(AlunoDTO alunoDTO)
+        public void AtualizarAluno(AlunoDTO aluno)
         {
-            var alunoExistente = Database.Alunos.FirstOrDefault(aluno => aluno.Id == alunoDTO.Id);
+            var alunoExistente = Database.Alunos.FirstOrDefault(a => a.Id == aluno.Id);
             if (alunoExistente == null)
                 throw new Exception("Aluno não encontrado.");
 
-            if (string.IsNullOrWhiteSpace(alunoDTO.Nome))
+            if (string.IsNullOrWhiteSpace(aluno.Nome))
                 throw new Exception("Nome é obrigatório.");
             
 
             // Atualiza os campos do aluno
-            alunoExistente.Nome = alunoDTO.Nome;
-            alunoExistente.CursoId = alunoDTO.CursoId;
-            alunoExistente.UnidadeId = alunoDTO.UnidadeId;
+            alunoExistente.Nome = aluno.Nome;
+            alunoExistente.CursoId = aluno.CursoId;
+            alunoExistente.UnidadeId = aluno.UnidadeId;
         }
 
         public void RemoverAluno(int id)

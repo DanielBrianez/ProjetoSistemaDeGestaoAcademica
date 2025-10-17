@@ -165,18 +165,34 @@ namespace TransformeseApp2.Desktop
 
         private void dgUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            // Ignora cliques no cabeçalho ou linhas inexistentes
+            if (e.RowIndex < 0)
+                return;
 
             DataGridViewRow row = dgUsuarios.Rows[e.RowIndex];
 
+            // Proteção contra valor nulo ou DBNull no ID
+            if (row.Cells["Id"].Value == null || row.Cells["Id"].Value == DBNull.Value)
+            {
+                usuarioSelecionadoId = null;
+                return;
+            }
+               
+            // Conversão segura
             usuarioSelecionadoId = Convert.ToInt32(row.Cells["Id"].Value);
-            txtNome.Text = row.Cells["Nome"].Value.ToString();
-            txtUsuario.Text = row.Cells["Login"].Value.ToString();
-            txtSenha.Text = row.Cells["Senha"].Value.ToString();
 
-            // Exibe foto, se houver
+            // Protege contra células nulas em texto
+            txtNome.Text = row.Cells["Nome"].Value?.ToString() ?? string.Empty;
+            txtUsuario.Text = row.Cells["Login"].Value?.ToString() ?? string.Empty;
+            txtSenha.Text = row.Cells["Senha"].Value?.ToString() ?? string.Empty;
+
+            // Busca o usuário completo no "banco" (lista simulada)
             var usuario = Database.Usuarios.FirstOrDefault(u => u.Id == usuarioSelecionadoId.Value);
-            if (usuario != null && !string.IsNullOrEmpty(usuario.FotoCaminho) && File.Exists(usuario.FotoCaminho))
+
+            // Exibe foto, se existir e for válida
+            if (usuario != null &&
+                !string.IsNullOrEmpty(usuario.FotoCaminho) &&
+                File.Exists(usuario.FotoCaminho))
             {
                 using (var temp = Image.FromFile(usuario.FotoCaminho))
                 {
@@ -192,6 +208,7 @@ namespace TransformeseApp2.Desktop
 
             btnAtualizar.Enabled = true;
         }
+
 
         private void ucUsuario_Load(object sender, EventArgs e)
         {
@@ -235,16 +252,16 @@ namespace TransformeseApp2.Desktop
             dt.Columns.Add("Login", typeof(string));
             dt.Columns.Add("Senha", typeof(string));
             dt.Columns.Add("Foto", typeof(Image));
-            dt.Columns.Add("URLFoto", typeof(string));
+            dt.Columns.Add("CaminhoDaFoto", typeof(string));
 
             foreach (var u in usuarios)
             {
                 Image? img = null;
-                if(string.IsNullOrEmpty(u.UrlFoto) && File.Exists(u.UrlFoto))
+                if(string.IsNullOrEmpty(u.FotoCaminho) && File.Exists(u.FotoCaminho))
                 {
                     try
                     {
-                        using (var fs = new FileStream(u.UrlFoto, FileMode.Open, FileAccess.Read))
+                        using (var fs = new FileStream(u.FotoCaminho, FileMode.Open, FileAccess.Read))
                         {
                             img = Image.FromStream(fs);
                         }
@@ -255,7 +272,7 @@ namespace TransformeseApp2.Desktop
                         img = null;
                     }
                 }
-                dt.Rows.Add(img,u.Id,u.Login,u.Senha,u.UrlFoto);
+                dt.Rows.Add(img,u.Id,u.Login,u.Senha,u.FotoCaminho);
             }
             dgUsuarios.DataSource = dt;
         }

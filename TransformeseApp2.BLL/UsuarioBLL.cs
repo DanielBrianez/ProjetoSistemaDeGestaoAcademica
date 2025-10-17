@@ -3,6 +3,7 @@ using TransformeseApp2.DTO;
 
 namespace TransformeseApp2.BLL
 {
+    
     public class UsuarioBLL
     {
         public UsuarioDTO? Login(string Login, string Senha)
@@ -20,6 +21,8 @@ namespace TransformeseApp2.BLL
 
         public void CadastrarUsuario(UsuarioDTO usuario)
         {
+            var usuarios = Database.Usuarios;
+
             if (string.IsNullOrWhiteSpace(usuario.Nome))
             {
                 throw new Exception("Nome é obrigatório!");
@@ -35,7 +38,8 @@ namespace TransformeseApp2.BLL
                 throw new Exception("Senha é obrigatório!");
             }
 
-            Database.Usuarios.Add(usuario);
+            usuarios.Add(usuario);
+            Database.Usuarios = usuarios;
         }
 
         public void RedefinirSenha(string login, string novaSenha)

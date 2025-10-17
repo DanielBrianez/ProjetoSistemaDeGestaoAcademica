@@ -6,12 +6,16 @@ namespace TransformeseApp2.BLL
     public class UnidadeBLL
     {
         private List<UnidadeDTO> _unidades = Database.Unidades;
-        public void CadastrarUnidade(UnidadeDTO unidadeDTO)
+        public void CadastrarUnidade(UnidadeDTO unidade)
         {
+            var unidades = Database.Unidades;
             //Validação antes de salvar a unidade
-            if (string.IsNullOrWhiteSpace(unidadeDTO.Nome))
+            if (string.IsNullOrWhiteSpace(unidade.Nome))
                 throw new Exception("Nome da unidade é obrigatório.");
-                Database.Unidades.Add(unidadeDTO);
+                Database.Unidades.Add(unidade);
+
+            unidades.Add(unidade);
+            Database.Unidades = unidades;
         }
         public List<UnidadeDTO> ListarUnidades() => Database.Unidades;
 
